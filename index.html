@@ -1,771 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CoverNeo — Premium Mobile Accessories</title>
-    <meta name="description" content="CoverNeo — Premium mobile covers, tempered glass, chargers, adapters, cables, power banks and repair services.">
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-<!-- =========================
-     NAVBAR
-========================= -->
-
-<header class="navbar" id="navbar">
-
-    <a href="#home" class="logo">
-        Cover<span>Neo</span>
-    </a>
-
-    <nav class="nav-links">
-        <a href="#shop">Shop</a>
-        <a href="#categories">Categories</a>
-        <a href="#protection">Protection</a>
-        <a href="#repair">Repair</a>
-        <a href="#about">About</a>
-    </nav>
-
-    <div class="nav-actions">
-
-        <button class="icon-btn" id="searchBtn" aria-label="Search">
-            <svg viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="6.5"></circle>
-                <path d="M16 16L21 21"></path>
-            </svg>
-        </button>
-
-        <button class="cart-btn" id="cartBtn">
-            Bag <span id="cartCount">0</span>
-        </button>
-
-        <button class="menu-btn" id="menuBtn" aria-label="Menu">
-            <span></span>
-            <span></span>
-        </button>
-
-    </div>
-
-</header>
-
-
-<!-- =========================
-     MOBILE MENU
-========================= -->
-
-<div class="mobile-menu" id="mobileMenu">
-
-    <a href="#shop">Shop</a>
-    <a href="#categories">Categories</a>
-    <a href="#protection">Protection</a>
-    <a href="#repair">Repair</a>
-    <a href="#about">About</a>
-
-</div>
-
-
-<!-- =========================
-     SEARCH OVERLAY
-========================= -->
-
-<div class="search-overlay" id="searchOverlay">
-
-    <button class="close-search" id="closeSearch">×</button>
-
-    <div class="search-box">
-
-        <p>SEARCH COVERNEO</p>
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search covers, chargers, cables..."
-            autocomplete="off"
-        >
-
-        <div id="searchResults"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<main id="home">
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <p class="eyebrow">THE NEW WAY TO PROTECT</p>
-
-        <h1>
-            Protection.
-            <br>
-            <span>Perfected.</span>
-        </h1>
-
-        <p class="hero-description">
-            Premium covers, powerful chargers, precision protection
-            and everyday accessories — designed for the way you live.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#shop" class="btn btn-dark">
-                Shop now
-            </a>
-
-            <a href="#categories" class="btn btn-light">
-                Explore
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="hero-visual">
-
-        <div class="floating-product product-one">
-            <div class="phone-shape"></div>
-        </div>
-
-        <div class="floating-product product-two">
-            <div class="charger-shape"></div>
-        </div>
-
-        <div class="hero-orb"></div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     TRUST BAR
-========================= -->
-
-<section class="trust-bar">
-
-    <div>
-        <strong>Premium Quality</strong>
-        <span>Built for everyday life</span>
-    </div>
-
-    <div>
-        <strong>Fast Delivery</strong>
-        <span>Across India</span>
-    </div>
-
-    <div>
-        <strong>Secure Payments</strong>
-        <span>100% safe checkout</span>
-    </div>
-
-    <div>
-        <strong>Expert Support</strong>
-        <span>We're here to help</span>
-    </div>
-
-</section>
-
-
-<!-- =========================
-     SHOP BY DEVICE
-========================= -->
-
-<section class="device-section">
-
-    <div class="section-heading">
-
-        <div>
-            <p class="eyebrow">FIND YOUR FIT</p>
-
-            <h2>
-                Shop by
-                <span>device.</span>
-            </h2>
-        </div>
-
-        <p>
-            Find accessories designed for your phone,
-            tablet and everyday tech.
-        </p>
-
-    </div>
-
-
-    <div class="device-grid">
-
-        <button class="device-card" data-device="Apple">
-            <div class="device-icon apple-icon"></div>
-            <h3>Apple</h3>
-            <span>iPhone · iPad · Mac</span>
-        </button>
-
-        <button class="device-card" data-device="Samsung">
-            <div class="device-icon">S</div>
-            <h3>Samsung</h3>
-            <span>Galaxy Series</span>
-        </button>
-
-        <button class="device-card" data-device="OnePlus">
-            <div class="device-icon">1+</div>
-            <h3>OnePlus</h3>
-            <span>Premium protection</span>
-        </button>
-
-        <button class="device-card" data-device="Others">
-            <div class="device-icon">+</div>
-            <h3>More devices</h3>
-            <span>Vivo · Oppo · Xiaomi · Moto</span>
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CATEGORIES
-========================= -->
-
-<section class="categories-section" id="categories">
-
-    <div class="section-heading center">
-
-        <p class="eyebrow">EXPLORE COVERNEO</p>
-
-        <h2>
-            Everything your
-            <span>device needs.</span>
-        </h2>
-
-    </div>
-
-
-    <div class="category-grid">
-
-        <article class="category-card large">
-
-            <div class="category-content">
-
-                <p>01 — PROTECTION</p>
-
-                <h3>
-                    Covers that
-                    <br>
-                    make a statement.
-                </h3>
-
-                <a href="#shop">Shop covers →</a>
-
-            </div>
-
-            <div class="category-visual case-visual">
-                <div class="case-shape"></div>
-            </div>
-
-        </article>
-
-
-        <article class="category-card">
-
-            <div class="category-content">
-
-                <p>02 — SCREEN</p>
-
-                <h3>
-                    Crystal clear.
-                    <br>
-                    Seriously strong.
-                </h3>
-
-                <a href="#shop">Shop protection →</a>
-
-            </div>
-
-            <div class="category-visual glass-visual">
-                <div class="glass-shape"></div>
-            </div>
-
-        </article>
-
-
-        <article class="category-card">
-
-            <div class="category-content">
-
-                <p>03 — POWER</p>
-
-                <h3>
-                    Charge faster.
-                    <br>
-                    Go further.
-                </h3>
-
-                <a href="#shop">Shop chargers →</a>
-
-            </div>
-
-            <div class="category-visual charger-visual">
-                <div class="charger-large"></div>
-            </div>
-
-        </article>
-
-
-        <article class="category-card">
-
-            <div class="category-content">
-
-                <p>04 — CONNECT</p>
-
-                <h3>
-                    Cables made
-                    <br>
-                    to last.
-                </h3>
-
-                <a href="#shop">Shop cables →</a>
-
-            </div>
-
-            <div class="category-visual cable-visual">
-                <div class="cable"></div>
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FEATURED PRODUCT
-========================= -->
-
-<section class="feature-section" id="protection">
-
-    <div class="feature-image">
-
-        <div class="feature-phone">
-
-            <div class="camera-module">
-                <i></i>
-                <i></i>
-                <i></i>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="feature-content">
-
-        <p class="eyebrow">COVERNEO SIGNATURE</p>
-
-        <h2>
-            Minimal outside.
-            <br>
-            Maximum protection.
-        </h2>
-
-        <p>
-            A slim, premium case engineered to protect your device
-            without hiding its original character.
-        </p>
-
-        <ul>
-            <li>Military-grade drop protection</li>
-            <li>Raised camera & screen protection</li>
-            <li>MagSafe compatible</li>
-            <li>Soft-touch premium finish</li>
-        </ul>
-
-        <a href="#shop" class="btn btn-dark">
-            Explore cases
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     SHOP PRODUCTS
-========================= -->
-
-<section class="shop-section" id="shop">
-
-    <div class="section-heading">
-
-        <div>
-
-            <p class="eyebrow">BEST SELLERS</p>
-
-            <h2>
-                Loved by
-                <span>thousands.</span>
-            </h2>
-
-        </div>
-
-        <div class="filter-buttons">
-
-            <button class="filter active" data-filter="all">
-                All
-            </button>
-
-            <button class="filter" data-filter="cases">
-                Cases
-            </button>
-
-            <button class="filter" data-filter="power">
-                Power
-            </button>
-
-            <button class="filter" data-filter="cables">
-                Cables
-            </button>
-
-            <button class="filter" data-filter="glass">
-                Protection
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="product-grid" id="productGrid">
-
-
-        <!-- PRODUCT 1 -->
-
-        <article
-            class="product-card"
-            data-category="cases"
-            data-name="NeoShield Clear Case"
-        >
-
-            <div class="product-image product-case">
-
-                <span class="badge">
-                    Bestseller
-                </span>
-
-                <div class="mock-case"></div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>NeoShield Clear Case</h3>
-
-                    <p>
-                        iPhone 15 / 15 Pro
-                    </p>
-
-                </div>
-
-                <strong>₹699</strong>
-
-            </div>
-
-            <button
-                class="add-cart"
-                data-product="NeoShield Clear Case"
-                data-price="699"
-            >
-                Add to Bag
-            </button>
-
-        </article>
-
-
-        <!-- PRODUCT 2 -->
-
-        <article
-            class="product-card"
-            data-category="power"
-            data-name="NeoCharge 25W Adapter"
-        >
-
-            <div class="product-image product-charger">
-
-                <span class="badge">
-                    Fast Charge
-                </span>
-
-                <div class="mock-charger"></div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>NeoCharge 25W</h3>
-
-                    <p>
-                        USB-C Fast Charger
-                    </p>
-
-                </div>
-
-                <strong>₹999</strong>
-
-            </div>
-
-            <button
-                class="add-cart"
-                data-product="NeoCharge 25W"
-                data-price="999"
-            >
-                Add to Bag
-            </button>
-
-        </article>
-
-
-        <!-- PRODUCT 3 -->
-
-        <article
-            class="product-card"
-            data-category="glass"
-            data-name="NeoGlass Privacy"
-        >
-
-            <div class="product-image product-glass">
-
-                <span class="badge">
-                    Premium
-                </span>
-
-                <div class="mock-glass"></div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>NeoGlass Privacy</h3>
-
-                    <p>
-                        9H Tempered Glass
-                    </p>
-
-                </div>
-
-                <strong>₹399</strong>
-
-            </div>
-
-            <button
-                class="add-cart"
-                data-product="NeoGlass Privacy"
-                data-price="399"
-            >
-                Add to Bag
-            </button>
-
-        </article>
-
-
-        <!-- PRODUCT 4 -->
-
-        <article
-            class="product-card"
-            data-category="cables"
-            data-name="NeoFlex USB-C Cable"
-        >
-
-            <div class="product-image product-cable">
-
-                <span class="badge">
-                    New
-                </span>
-
-                <div class="mock-cable"></div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>NeoFlex Cable</h3>
-
-                    <p>
-                        USB-C to USB-C
-                    </p>
-
-                </div>
-
-                <strong>₹499</strong>
-
-            </div>
-
-            <button
-                class="add-cart"
-                data-product="NeoFlex Cable"
-                data-price="499"
-            >
-                Add to Bag
-            </button>
-
-        </article>
-
-
-        <!-- PRODUCT 5 -->
-
-        <article
-            class="product-card"
-            data-category="power"
-            data-name="NeoPower 10000"
-        >
-
-            <div class="product-image product-powerbank">
-
-                <div class="mock-powerbank"></div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>NeoPower 10K</h3>
-
-                    <p>
-                        10000mAh Power Bank
-                    </p>
-
-                </div>
-
-                <strong>₹1,499</strong>
-
-            </div>
-
-            <button
-                class="add-cart"
-                data-product="NeoPower 10K"
-                data-price="1499"
-            >
-                Add to Bag
-            </button>
-
-        </article>
-
-
-        <!-- PRODUCT 6 -->
-
-        <article
-            class="product-card"
-            data-category="cases"
-            data-name="NeoArmor MagSafe"
-        >
-
-            <div class="product-image product-armor">
-
-                <span class="badge">
-                    MagSafe
-                </span>
-
-                <div class="mock-armor"></div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>NeoArmor MagSafe</h3>
-
-                    <p>
-                        Shockproof Case
-                    </p>
-
-                </div>
-
-                <strong>₹899</strong>
-
-            </div>
-
-            <button
-                class="add-cart"
-                data-product="NeoArmor MagSafe"
-                data-price="899"
-            >
-                Add to Bag
-            </button>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PROMO BANNER
-========================= -->
-
-<section class="promo-section">
-
-    <div class="promo-content">
-
-        <p class="eyebrow">
-            POWER WITHOUT COMPROMISE
-        </p>
-
-        <h2>
-            One charger.
-            <br>
-            <span>Everywhere you go.</span>
-        </h2>
-
-        <p>
-            Compact GaN charging technology designed for
-            your phone, tablet, laptop and more.
-        </p>
-
-        <a href="#shop" class="btn btn-white">
-            Discover power
-        </a>
-
-    </div>
-
-    <div class="promo-visual">
-
-        <div class="gan-charger">
-            <div class="charger-port"></div>
-            <div class="charger-port"></div>
-        </div>
-
-    </div>
-
-</section>
-
-
 <!-- =========================
      COVERNEO DEVICE SERVICES
 ========================= -->
@@ -783,113 +15,115 @@
         </h2>
 
         <p>
-            Simple, professional assistance for setting up,
-            transferring and connecting your everyday devices.
+            Simple assistance for setting up devices,
+            transferring personal data and getting
+            everyday technology ready to use.
         </p>
 
     </div>
 
 
     <!-- =========================
-         MAIN SERVICES
+         SERVICE GRID
     ========================= -->
 
     <div class="service-grid">
 
-        <!-- iPhone Setup -->
+        <!-- Smartphone Setup -->
 
         <div class="service-card">
 
             <div class="service-icon">📱</div>
 
-            <h4>iPhone Setup</h4>
+            <h4>Smartphone Setup</h4>
 
             <p>
-                Complete basic iPhone setup including
-                Wi-Fi, essential settings, Apple Account
-                and everyday preferences.
+                Assistance with basic device setup,
+                Wi-Fi, essential settings and everyday
+                preferences.
             </p>
 
         </div>
 
 
-        <!-- MacBook Setup -->
+        <!-- Laptop Setup -->
 
         <div class="service-card">
 
             <div class="service-icon">💻</div>
 
-            <h4>MacBook Setup</h4>
+            <h4>Laptop Setup</h4>
 
             <p>
-                New MacBook setup with essential settings,
-                Apple Account, Wi-Fi and basic macOS guidance.
+                Basic laptop setup including connectivity,
+                essential settings and getting started
+                guidance.
             </p>
 
         </div>
 
 
-        <!-- iPhone Data Transfer -->
+        <!-- Data Transfer -->
 
         <div class="service-card">
 
             <div class="service-icon">🔄</div>
 
-            <h4>iPhone Data Transfer</h4>
+            <h4>Data Transfer</h4>
 
             <p>
                 Assistance with transferring supported
-                contacts, photos, videos, messages, apps
-                and other personal data.
+                contacts, photos, videos and other
+                compatible personal data.
             </p>
 
         </div>
 
 
-        <!-- Android to iPhone -->
+        <!-- Phone Transfer -->
 
         <div class="service-card">
 
             <div class="service-icon">🔀</div>
 
-            <h4>Android → iPhone Transfer</h4>
+            <h4>Phone-to-Phone Transfer</h4>
 
             <p>
-                Assistance with moving supported contacts,
-                photos, videos, messages and other compatible
-                personal data to iPhone.
+                Assistance with moving compatible personal
+                data from an old phone to a new device.
             </p>
 
         </div>
 
 
-        <!-- Apple Watch -->
+        <!-- Wearable Setup -->
 
         <div class="service-card">
 
             <div class="service-icon">⌚</div>
 
-            <h4>Apple Watch Connection</h4>
+            <h4>Wearable Setup</h4>
 
             <p>
-                Pairing and basic setup assistance to connect
-                your Apple Watch with a compatible iPhone.
+                Basic pairing and setup assistance for
+                compatible smartwatches and wearable devices.
             </p>
 
         </div>
 
 
-        <!-- Apple Account / iCloud -->
+        <!-- Account Setup -->
 
         <div class="service-card">
 
             <div class="service-icon">☁️</div>
 
-            <h4>Apple Account & iCloud</h4>
+            <h4>Account & Backup Setup</h4>
 
             <p>
-                Assistance with Apple Account setup, iCloud,
-                Photos, Contacts, Calendar and backup settings.
+                Assistance with account settings, cloud
+                backup, contacts, photos and basic
+                synchronization.
             </p>
 
         </div>
@@ -918,7 +152,7 @@
         <a
             href="https://wa.me/919999999999?text=Hello%20CoverNeo,%20I%20need%20device%20setup%20or%20support."
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             class="btn btn-dark"
         >
             Get Device Support →
@@ -928,333 +162,46 @@
 
 
     <!-- =========================
-         DISCLAIMER
+         SIMPLE DISCLAIMER
     ========================= -->
 
     <div class="service-disclaimer">
 
-        <h4>Service Disclaimer</h4>
+        <h4>Service Information</h4>
 
         <p>
             CoverNeo provides independent device setup,
-            data-transfer, account-setup and product-learning
-            assistance. Unless expressly stated, CoverNeo is
-            not affiliated with, sponsored by, endorsed by,
-            or an authorized service provider of Apple Inc.
-            or any other device manufacturer.
+            data-transfer and general technology assistance.
+            Services are subject to device compatibility,
+            software version and technical conditions.
         </p>
 
         <p>
-            Apple, iPhone, iPad, MacBook, Apple Watch, AirPods,
-            iCloud and other trademarks belong to their respective
-            owners. Product names are used only to identify
-            compatible devices and services.
+            Customers should maintain a backup of important
+            personal data before starting any setup or
+            transfer service.
+        </p>
+
+        <p>
+            Customers must personally enter passwords,
+            PINs, OTPs and other confidential information.
+            CoverNeo does not request or retain such
+            credentials.
         </p>
 
         <p>
             Data-transfer results may vary depending on the
-            device, operating-system version, account access,
-            application support and other technical conditions.
-            Customers are advised to maintain a current backup
-            before any setup or transfer service.
+            devices, operating systems, applications and
+            available storage.
         </p>
 
         <p>
-            Customers must personally enter passwords, PINs,
-            OTPs, banking credentials, recovery codes and other
-            sensitive information. CoverNeo does not request
-            or retain confidential credentials.
-        </p>
-
-        <p>
-            eSIM and cellular-related assistance is subject to
-            carrier availability, eligibility and carrier
-            requirements. CoverNeo provides setup assistance
-            only and does not guarantee carrier activation
-            or network service.
-        </p>
-
-        <p>
-            These services are limited to setup, guidance and
-            basic assistance and do not constitute professional
-            repair, data recovery, cybersecurity, financial,
-            banking or telecom services.
+            These services are limited to setup, guidance
+            and basic assistance and do not include hardware
+            repair, professional data recovery or cybersecurity
+            services.
         </p>
 
     </div>
 
 </section>
-
-<!-- =========================
-     WHY COVERNEO
-========================= -->
-
-<section class="why-section" id="about">
-
-    <div class="section-heading center">
-
-        <p class="eyebrow">WHY COVERNEO</p>
-
-        <h2>
-            Better accessories.
-            <br>
-            <span>Better everyday.</span>
-        </h2>
-
-    </div>
-
-
-    <div class="why-grid">
-
-        <div class="why-card">
-
-            <div class="why-number">01</div>
-
-            <h3>Premium Quality</h3>
-
-            <p>
-                Every product is selected for durability,
-                performance and everyday reliability.
-            </p>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-number">02</div>
-
-            <h3>Designed for You</h3>
-
-            <p>
-                Minimal design, practical features and
-                perfect compatibility.
-            </p>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-number">03</div>
-
-            <h3>Customer First</h3>
-
-            <p>
-                Simple shopping, transparent pricing and
-                support whenever you need it.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     NEWSLETTER
-========================= -->
-
-<section class="newsletter">
-
-    <p class="eyebrow">
-        STAY IN THE LOOP
-    </p>
-
-    <h2>
-        New drops.
-        <br>
-        Better protection.
-    </h2>
-
-    <p>
-        Get updates about new products, exclusive offers
-        and CoverNeo launches.
-    </p>
-
-    <form id="newsletterForm">
-
-        <input
-            type="email"
-            id="emailInput"
-            placeholder="Your email address"
-            required
-        >
-
-        <button type="submit">
-            Subscribe →
-        </button>
-
-    </form>
-
-    <small id="newsletterMessage"></small>
-
-</section>
-
-</main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer class="footer">
-
-    <div class="footer-top">
-
-        <div class="footer-brand">
-
-            <a href="#home" class="logo">
-                Cover<span>Neo</span>
-            </a>
-
-            <p>
-                Premium accessories.
-                Thoughtfully designed for your everyday.
-            </p>
-
-            <a
-                class="whatsapp-link"
-                href="https://wa.me/919999999999"
-                target="_blank"
-            >
-                Chat on WhatsApp →
-            </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>Shop</h4>
-
-            <a href="#shop">Cases</a>
-            <a href="#shop">Tempered Glass</a>
-            <a href="#shop">Chargers</a>
-            <a href="#shop">Cables</a>
-            <a href="#shop">Power Banks</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>Services</h4>
-
-            <a href="#repair">Screen Repair</a>
-            <a href="#repair">Battery Service</a>
-            <a href="#repair">Device Check</a>
-            <a href="#protection">Screen Protection</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>Company</h4>
-
-            <a href="#about">About CoverNeo</a>
-            <a href="#">Contact</a>
-            <a href="#">Shipping</a>
-            <a href="#">Returns</a>
-            <a href="#">Privacy</a>
-
-        </div>
-
-
-        <div class="footer-column contact-column">
-
-            <h4>Contact</h4>
-
-            <p>
-                Your Store Address,<br>
-                Gurugram, Haryana
-            </p>
-
-            <a href="tel:+919999999999">
-                +91 99999 99999
-            </a>
-
-            <a href="mailto:hello@coverneo.com">
-                hello@coverneo.com
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <span>
-            © <span id="year"></span> CoverNeo. All rights reserved.
-        </span>
-
-        <span>
-            Made for your everyday.
-        </span>
-
-    </div>
-
-</footer>
-
-
-<!-- =========================
-     CART DRAWER
-========================= -->
-
-<div class="cart-overlay" id="cartOverlay"></div>
-
-<aside class="cart-drawer" id="cartDrawer">
-
-    <div class="cart-header">
-
-        <h2>Your Bag</h2>
-
-        <button id="closeCart">×</button>
-
-    </div>
-
-    <div id="cartItems" class="cart-items">
-
-        <p class="empty-cart">
-            Your bag is empty.
-        </p>
-
-    </div>
-
-    <div class="cart-footer">
-
-        <div class="cart-total">
-
-            <span>Total</span>
-
-            <strong id="cartTotal">
-                ₹0
-            </strong>
-
-        </div>
-
-        <button class="checkout-btn" id="checkoutBtn">
-            Checkout
-        </button>
-
-    </div>
-
-</aside>
-
-
-<!-- =========================
-     TOAST
-========================= -->
-
-<div class="toast" id="toast">
-    Added to your bag.
-</div>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
