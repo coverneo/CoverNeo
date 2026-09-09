@@ -1,3 +1,4 @@
+```javascript
 /* =========================================
    COVERNEO JAVASCRIPT
 ========================================= */
@@ -25,6 +26,8 @@ const cartCount = document.getElementById("cartCount");
 const cartItems = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
 
+const checkoutBtn = document.getElementById("checkoutBtn");
+
 const toast = document.getElementById("toast");
 
 
@@ -32,55 +35,119 @@ const toast = document.getElementById("toast");
    MOBILE MENU
 ========================================= */
 
-menuBtn.addEventListener("click", () => {
+if (menuBtn && mobileMenu) {
 
-    mobileMenu.classList.toggle("active");
+    menuBtn.addEventListener("click", () => {
 
-});
+        const isActive =
+            mobileMenu.classList.toggle("active");
 
+        menuBtn.setAttribute(
+            "aria-expanded",
+            isActive ? "true" : "false"
+        );
 
-document.querySelectorAll(".mobile-menu a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        mobileMenu.classList.remove("active");
+        menuBtn.setAttribute(
+            "aria-label",
+            isActive ? "Close menu" : "Open menu"
+        );
 
     });
 
-});
+
+    document
+        .querySelectorAll(".mobile-menu a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                mobileMenu.classList.remove("active");
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuBtn.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+
+            });
+
+        });
+
+}
 
 
 /* =========================================
    SEARCH
 ========================================= */
 
-searchBtn.addEventListener("click", () => {
+if (
+    searchBtn &&
+    searchOverlay &&
+    searchInput &&
+    closeSearch
+) {
 
-    searchOverlay.classList.add("active");
+    searchBtn.addEventListener("click", () => {
 
-    setTimeout(() => {
+        searchOverlay.classList.add("active");
 
-        searchInput.focus();
+        setTimeout(() => {
 
-    }, 200);
+            searchInput.focus();
 
-});
+        }, 200);
+
+    });
 
 
-closeSearch.addEventListener("click", () => {
+    closeSearch.addEventListener("click", () => {
 
-    searchOverlay.classList.remove("active");
+        searchOverlay.classList.remove("active");
 
-});
+    });
 
+}
+
+
+/* =========================================
+   KEYBOARD CONTROLS
+========================================= */
 
 document.addEventListener("keydown", event => {
 
     if (event.key === "Escape") {
 
-        searchOverlay.classList.remove("active");
+        if (searchOverlay) {
+
+            searchOverlay.classList.remove("active");
+
+        }
 
         closeCartDrawer();
+
+        if (mobileMenu) {
+
+            mobileMenu.classList.remove("active");
+
+        }
+
+        if (menuBtn) {
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuBtn.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+
+        }
 
     }
 
@@ -88,7 +155,7 @@ document.addEventListener("keydown", event => {
 
 
 /* =========================================
-   PRODUCT SEARCH
+   PRODUCT DATABASE
 ========================================= */
 
 const products = [
@@ -132,11 +199,17 @@ const products = [
 ];
 
 
+/* =========================================
+   PRODUCT SEARCH
+========================================= */
+
 function renderSearchResults(query) {
 
-    const cleanQuery = query
-        .trim()
-        .toLowerCase();
+    if (!searchResults) return;
+
+
+    const cleanQuery =
+        query.trim().toLowerCase();
 
 
     if (!cleanQuery) {
@@ -151,8 +224,13 @@ function renderSearchResults(query) {
     const matches = products.filter(product => {
 
         return (
-            product.name.toLowerCase().includes(cleanQuery) ||
-            product.category.toLowerCase().includes(cleanQuery)
+            product.name
+                .toLowerCase()
+                .includes(cleanQuery) ||
+
+            product.category
+                .toLowerCase()
+                .includes(cleanQuery)
         );
 
     });
@@ -172,33 +250,48 @@ function renderSearchResults(query) {
     }
 
 
-    searchResults.innerHTML = matches.map(product => {
+    searchResults.innerHTML =
+        matches.map(product => {
 
-        return `
-            <div class="search-result">
-                <strong>${product.name}</strong>
-                <span>${product.category} · ₹${product.price}</span>
-            </div>
-        `;
+            return `
+                <div class="search-result">
+                    <strong>${product.name}</strong>
+                    <span>
+                        ${product.category} · ₹${product.price.toLocaleString("en-IN")}
+                    </span>
+                </div>
+            `;
 
-    }).join("");
+        }).join("");
 
 }
 
 
-searchInput.addEventListener("input", event => {
+if (searchInput) {
 
-    renderSearchResults(event.target.value);
+    searchInput.addEventListener(
+        "input",
+        event => {
 
-});
+            renderSearchResults(
+                event.target.value
+            );
+
+        }
+    );
+
+}
 
 
 /* =========================================
    PRODUCT FILTER
 ========================================= */
 
-const filters = document.querySelectorAll(".filter");
-const productCards = document.querySelectorAll(".product-card");
+const filters =
+    document.querySelectorAll(".filter");
+
+const productCards =
+    document.querySelectorAll(".product-card");
 
 
 filters.forEach(filter => {
@@ -211,10 +304,12 @@ filters.forEach(filter => {
 
         });
 
+
         filter.classList.add("active");
 
 
-        const category = filter.dataset.filter;
+        const category =
+            filter.dataset.filter;
 
 
         productCards.forEach(card => {
@@ -243,28 +338,40 @@ filters.forEach(filter => {
    DEVICE FILTER
 ========================================= */
 
-document.querySelectorAll(".device-card").forEach(card => {
+document
+    .querySelectorAll(".device-card")
+    .forEach(card => {
 
-    card.addEventListener("click", () => {
+        card.addEventListener("click", () => {
 
-        const device = card.dataset.device;
+            const device =
+                card.dataset.device;
 
-        document.getElementById("shop").scrollIntoView({
-            behavior: "smooth"
+
+            const shopSection =
+                document.getElementById("shop");
+
+
+            if (shopSection) {
+
+                shopSection.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+
+            setTimeout(() => {
+
+                showToast(
+                    `Showing accessories for ${device}`
+                );
+
+            }, 500);
+
         });
 
-
-        setTimeout(() => {
-
-            showToast(
-                `Showing accessories for ${device}`
-            );
-
-        }, 500);
-
     });
-
-});
 
 
 /* =========================================
@@ -274,9 +381,21 @@ document.querySelectorAll(".device-card").forEach(card => {
 let cart = [];
 
 
+/* =========================================
+   UPDATE CART
+========================================= */
+
 function updateCart() {
 
-    cartCount.textContent = cart.length;
+    if (cartCount) {
+
+        cartCount.textContent =
+            cart.length;
+
+    }
+
+
+    if (!cartItems || !cartTotal) return;
 
 
     if (cart.length === 0) {
@@ -294,43 +413,53 @@ function updateCart() {
     }
 
 
-    cartItems.innerHTML = cart.map((item, index) => {
+    cartItems.innerHTML =
+        cart.map((item, index) => {
 
-        return `
-            <div class="cart-item">
+            return `
+                <div class="cart-item">
 
-                <div>
+                    <div>
 
-                    <h4>${item.name}</h4>
+                        <h4>${item.name}</h4>
 
-                    <p>₹${item.price}</p>
+                        <p>
+                            ₹${item.price.toLocaleString("en-IN")}
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="remove-item"
+                        onclick="removeFromCart(${index})"
+                    >
+                        Remove
+                    </button>
 
                 </div>
+            `;
 
-                <button
-                    class="remove-item"
-                    onclick="removeFromCart(${index})"
-                >
-                    Remove
-                </button>
-
-            </div>
-        `;
-
-    }).join("");
+        }).join("");
 
 
-    const total = cart.reduce(
-        (sum, item) => sum + item.price,
-        0
-    );
+    const total =
+        cart.reduce(
+            (sum, item) =>
+                sum + item.price,
+            0
+        );
 
 
     cartTotal.textContent =
-        "₹" + total.toLocaleString("en-IN");
+        "₹" +
+        total.toLocaleString("en-IN");
 
 }
 
+
+/* =========================================
+   ADD TO CART
+========================================= */
 
 function addToCart(name, price) {
 
@@ -345,40 +474,86 @@ function addToCart(name, price) {
 
     updateCart();
 
-    showToast(`${name} added to your bag.`);
+    showToast(
+        `${name} added to your bag.`
+    );
 
 }
 
+
+/* =========================================
+   REMOVE FROM CART
+========================================= */
 
 function removeFromCart(index) {
 
+    if (
+        index < 0 ||
+        index >= cart.length
+    ) {
+
+        return;
+
+    }
+
+
+    const removedItem =
+        cart[index];
+
+
     cart.splice(index, 1);
 
+
     updateCart();
+
+
+    showToast(
+        `${removedItem.name} removed from your bag.`
+    );
 
 }
 
 
-window.removeFromCart = removeFromCart;
+window.removeFromCart =
+    removeFromCart;
 
 
 /* =========================================
    ADD TO BAG BUTTONS
 ========================================= */
 
-document.querySelectorAll(".add-cart").forEach(button => {
+document
+    .querySelectorAll(".add-cart")
+    .forEach(button => {
 
-    button.addEventListener("click", () => {
+        button.addEventListener(
+            "click",
+            () => {
 
-        const name = button.dataset.product;
+                const name =
+                    button.dataset.product;
 
-        const price = button.dataset.price;
+                const price =
+                    button.dataset.price;
 
-        addToCart(name, price);
+
+                if (!name || !price) {
+
+                    showToast(
+                        "Product information unavailable."
+                    );
+
+                    return;
+
+                }
+
+
+                addToCart(name, price);
+
+            }
+        );
 
     });
-
-});
 
 
 /* =========================================
@@ -387,6 +562,11 @@ document.querySelectorAll(".add-cart").forEach(button => {
 
 function openCartDrawer() {
 
+    if (!cartDrawer || !cartOverlay) {
+        return;
+    }
+
+
     cartDrawer.classList.add("active");
 
     cartOverlay.classList.add("active");
@@ -394,7 +574,16 @@ function openCartDrawer() {
 }
 
 
+/* =========================================
+   CLOSE CART
+========================================= */
+
 function closeCartDrawer() {
+
+    if (!cartDrawer || !cartOverlay) {
+        return;
+    }
+
 
     cartDrawer.classList.remove("active");
 
@@ -403,71 +592,106 @@ function closeCartDrawer() {
 }
 
 
-cartBtn.addEventListener("click", openCartDrawer);
+if (cartBtn) {
 
-closeCart.addEventListener("click", closeCartDrawer);
+    cartBtn.addEventListener(
+        "click",
+        openCartDrawer
+    );
 
-cartOverlay.addEventListener("click", closeCartDrawer);
+}
+
+
+if (closeCart) {
+
+    closeCart.addEventListener(
+        "click",
+        closeCartDrawer
+    );
+
+}
+
+
+if (cartOverlay) {
+
+    cartOverlay.addEventListener(
+        "click",
+        closeCartDrawer
+    );
+
+}
 
 
 /* =========================================
-   CHECKOUT
+   CHECKOUT — WHATSAPP
 ========================================= */
 
-const checkoutBtn = document.getElementById("checkoutBtn");
+if (checkoutBtn) {
+
+    checkoutBtn.addEventListener(
+        "click",
+        () => {
+
+            if (cart.length === 0) {
+
+                showToast(
+                    "Your bag is empty."
+                );
+
+                return;
+
+            }
 
 
-checkoutBtn.addEventListener("click", () => {
+            const message =
+                cart.map(item => {
 
-    if (cart.length === 0) {
+                    return (
+                        `${item.name} - ₹` +
+                        item.price.toLocaleString("en-IN")
+                    );
 
-        showToast("Your bag is empty.");
-
-        return;
-
-    }
-
-
-    const message = cart.map(item => {
-
-        return `${item.name} - ₹${item.price}`;
-
-    }).join("\n");
+                }).join("\n");
 
 
-    const total = cart.reduce(
-        (sum, item) => sum + item.price,
-        0
-    );
+            const total =
+                cart.reduce(
+                    (sum, item) =>
+                        sum + item.price,
+                    0
+                );
 
 
-    const whatsappMessage = encodeURIComponent(
+            const whatsappMessage =
+                encodeURIComponent(
 
-        `Hello CoverNeo,
+                    `Hello CoverNeo,
 
 I want to order:
 
 ${message}
 
-Total: ₹${total}
+Total: ₹${total.toLocaleString("en-IN")}
 
 Please share the next steps.`
 
+                );
+
+
+            /*
+               CoverNeo WhatsApp Number
+               +91 9319990227
+            */
+
+            window.open(
+                `https://wa.me/919319990227?text=${whatsappMessage}`,
+                "_blank"
+            );
+
+        }
     );
 
-
-    /*
-       IMPORTANT:
-       Replace 919999999999 with
-       your actual WhatsApp number.
-    */
-
-    window.open(
-        `https://wa.me/919999999999?text=${whatsappMessage}`,
-        "_blank"
-    );
-
-});
+}
 
 
 /* =========================================
@@ -479,7 +703,12 @@ let toastTimer;
 
 function showToast(message) {
 
-    toast.textContent = message;
+    if (!toast) return;
+
+
+    toast.textContent =
+        message;
+
 
     toast.classList.add("show");
 
@@ -487,11 +716,12 @@ function showToast(message) {
     clearTimeout(toastTimer);
 
 
-    toastTimer = setTimeout(() => {
+    toastTimer =
+        setTimeout(() => {
 
-        toast.classList.remove("show");
+            toast.classList.remove("show");
 
-    }, 2500);
+        }, 2500);
 
 }
 
@@ -501,47 +731,74 @@ function showToast(message) {
 ========================================= */
 
 const newsletterForm =
-    document.getElementById("newsletterForm");
+    document.getElementById(
+        "newsletterForm"
+    );
 
 const emailInput =
-    document.getElementById("emailInput");
+    document.getElementById(
+        "emailInput"
+    );
 
 const newsletterMessage =
-    document.getElementById("newsletterMessage");
+    document.getElementById(
+        "newsletterMessage"
+    );
 
 
-newsletterForm.addEventListener("submit", event => {
+if (
+    newsletterForm &&
+    emailInput &&
+    newsletterMessage
+) {
 
-    event.preventDefault();
+    newsletterForm.addEventListener(
+        "submit",
+        event => {
 
-
-    const email = emailInput.value.trim();
-
-
-    if (!email) {
-
-        newsletterMessage.textContent =
-            "Please enter your email.";
-
-        return;
-
-    }
+            event.preventDefault();
 
 
-    newsletterMessage.textContent =
-        "Thank you! You're on the list.";
+            const email =
+                emailInput.value.trim();
 
-    emailInput.value = "";
 
-});
+            if (!email) {
+
+                newsletterMessage.textContent =
+                    "Please enter your email.";
+
+                return;
+
+            }
+
+
+            newsletterMessage.textContent =
+                "Thank you! You're on the list.";
+
+
+            emailInput.value = "";
+
+        }
+    );
+
+}
 
 
 /* =========================================
    CURRENT YEAR
 ========================================= */
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+const yearElement =
+    document.getElementById("year");
+
+
+if (yearElement) {
+
+    yearElement.textContent =
+        new Date().getFullYear();
+
+}
 
 
 /* =========================================
@@ -552,35 +809,55 @@ const navbar =
     document.getElementById("navbar");
 
 
-window.addEventListener("scroll", () => {
+if (navbar) {
 
-    if (window.scrollY > 30) {
+    window.addEventListener(
+        "scroll",
+        () => {
 
-        navbar.style.boxShadow =
-            "0 5px 30px rgba(0,0,0,0.06)";
+            if (window.scrollY > 30) {
 
-    } else {
+                navbar.style.boxShadow =
+                    "0 5px 30px rgba(0,0,0,0.06)";
 
-        navbar.style.boxShadow = "none";
+            } else {
 
-    }
+                navbar.style.boxShadow =
+                    "none";
 
-});
+            }
+
+        }
+    );
+
+}
 
 
 /* =========================================
    CLOSE SEARCH WITH BACKDROP
 ========================================= */
 
-searchOverlay.addEventListener("click", event => {
+if (searchOverlay) {
 
-    if (event.target === searchOverlay) {
+    searchOverlay.addEventListener(
+        "click",
+        event => {
 
-        searchOverlay.classList.remove("active");
+            if (
+                event.target ===
+                searchOverlay
+            ) {
 
-    }
+                searchOverlay.classList.remove(
+                    "active"
+                );
 
-});
+            }
+
+        }
+    );
+
+}
 
 
 /* =========================================
@@ -589,6 +866,8 @@ searchOverlay.addEventListener("click", event => {
 
 updateCart();
 
+
 console.log(
     "CoverNeo website loaded successfully."
 );
+```
