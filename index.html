@@ -1,296 +1,764 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CoverNeo | Premium Mobile Accessories</title>
-    <meta name="description" content="CoverNeo - Premium mobile covers, screen protection and mobile accessories.">
+    <title>CoverNeo — Premium Mobile Accessories</title>
+    <meta name="description" content="CoverNeo — Premium mobile covers, tempered glass, chargers, adapters, cables, power banks and repair services.">
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="logo">Cover<span>Neo</span></div>
+<!-- =========================
+     NAVBAR
+========================= -->
 
-    <nav id="navMenu">
-        <a href="#home">Home</a>
+<header class="navbar" id="navbar">
+
+    <a href="#home" class="logo">
+        Cover<span>Neo</span>
+    </a>
+
+    <nav class="nav-links">
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#protection">Protection</a>
+        <a href="#repair">Repair</a>
         <a href="#about">About</a>
-        <a href="#products">Products</a>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
     </nav>
 
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="nav-actions">
+
+        <button class="icon-btn" id="searchBtn" aria-label="Search">
+            <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="6.5"></circle>
+                <path d="M16 16L21 21"></path>
+            </svg>
+        </button>
+
+        <button class="cart-btn" id="cartBtn">
+            Bag <span id="cartCount">0</span>
+        </button>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Menu">
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
 </header>
 
 
-<!-- HERO -->
-<section id="home" class="hero">
+<!-- =========================
+     MOBILE MENU
+========================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="#shop">Shop</a>
+    <a href="#categories">Categories</a>
+    <a href="#protection">Protection</a>
+    <a href="#repair">Repair</a>
+    <a href="#about">About</a>
+
+</div>
+
+
+<!-- =========================
+     SEARCH OVERLAY
+========================= -->
+
+<div class="search-overlay" id="searchOverlay">
+
+    <button class="close-search" id="closeSearch">×</button>
+
+    <div class="search-box">
+
+        <p>SEARCH COVERNEO</p>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search covers, chargers, cables..."
+            autocomplete="off"
+        >
+
+        <div id="searchResults"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main id="home">
+
+<section class="hero">
 
     <div class="hero-content">
 
-        <p class="small-title">PREMIUM MOBILE ACCESSORIES</p>
+        <p class="eyebrow">THE NEW WAY TO PROTECT</p>
 
         <h1>
-            Protect Your Phone.
-            <span>Style Your World.</span>
+            Protection.
+            <br>
+            <span>Perfected.</span>
         </h1>
 
-        <p class="hero-text">
-            Premium mobile covers, screen protection, chargers,
-            cables, power banks and everyday mobile accessories.
+        <p class="hero-description">
+            Premium covers, powerful chargers, precision protection
+            and everyday accessories — designed for the way you live.
         </p>
 
         <div class="hero-buttons">
-            <a href="#products" class="btn primary">Explore Products</a>
-            <a href="https://wa.me/919999999999" class="btn secondary">
-                WhatsApp Us
+
+            <a href="#shop" class="btn btn-dark">
+                Shop now
             </a>
+
+            <a href="#categories" class="btn btn-light">
+                Explore
+            </a>
+
         </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+        <div class="floating-product product-one">
+            <div class="phone-shape"></div>
+        </div>
+
+        <div class="floating-product product-two">
+            <div class="charger-shape"></div>
+        </div>
+
+        <div class="hero-orb"></div>
 
     </div>
 
 </section>
 
 
-<!-- ABOUT -->
-<section id="about" class="section about">
+<!-- =========================
+     TRUST BAR
+========================= -->
 
-    <div class="section-heading">
-        <p>ABOUT US</p>
-        <h2>Everything Your Phone Needs.</h2>
-    </div>
-
-    <div class="about-grid">
-
-        <div>
-            <h3>Premium Quality. Smart Prices.</h3>
-
-            <p>
-                CoverNeo is a modern mobile accessories brand focused
-                on stylish protection and useful everyday gadgets.
-            </p>
-
-            <p>
-                From premium phone covers and screen protectors to
-                chargers, cables and power banks — we bring essential
-                accessories together in one place.
-            </p>
-        </div>
-
-        <div class="about-card">
-            <div>
-                <strong>100+</strong>
-                <span>Products</span>
-            </div>
-
-            <div>
-                <strong>10+</strong>
-                <span>Categories</span>
-            </div>
-
-            <div>
-                <strong>100%</strong>
-                <span>Customer Focus</span>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PRODUCTS -->
-<section id="products" class="section products">
-
-    <div class="section-heading">
-        <p>OUR COLLECTION</p>
-        <h2>Shop By Category</h2>
-    </div>
-
-    <div class="product-grid">
-
-        <div class="product-card">
-            <div class="product-icon">📱</div>
-            <h3>Mobile Covers</h3>
-            <p>Stylish and protective covers for your smartphone.</p>
-            <a href="#contact">View Collection →</a>
-        </div>
-
-        <div class="product-card">
-            <div class="product-icon">🛡️</div>
-            <h3>Screen Protection</h3>
-            <p>Premium screen guards and protection solutions.</p>
-            <a href="#contact">View Collection →</a>
-        </div>
-
-        <div class="product-card">
-            <div class="product-icon">🔌</div>
-            <h3>Chargers</h3>
-            <p>Reliable adapters and fast charging solutions.</p>
-            <a href="#contact">View Collection →</a>
-        </div>
-
-        <div class="product-card">
-            <div class="product-icon">🔗</div>
-            <h3>Cables</h3>
-            <p>Charging and data cables for everyday use.</p>
-            <a href="#contact">View Collection →</a>
-        </div>
-
-        <div class="product-card">
-            <div class="product-icon">🔋</div>
-            <h3>Power Banks</h3>
-            <p>Portable power for your everyday lifestyle.</p>
-            <a href="#contact">View Collection →</a>
-        </div>
-
-        <div class="product-card">
-            <div class="product-icon">🎧</div>
-            <h3>Mobile Accessories</h3>
-            <p>Useful accessories designed for modern devices.</p>
-            <a href="#contact">View Collection →</a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SERVICES -->
-<section id="services" class="section services">
-
-    <div class="section-heading">
-        <p>WHAT WE OFFER</p>
-        <h2>Our Services</h2>
-    </div>
-
-    <div class="service-grid">
-
-        <div class="service-card">
-            <span>01</span>
-            <h3>Mobile Cover</h3>
-            <p>Find the right protection and style for your smartphone.</p>
-        </div>
-
-        <div class="service-card">
-            <span>02</span>
-            <h3>Screen Protection</h3>
-            <p>Professional screen protection solutions for your device.</p>
-        </div>
-
-        <div class="service-card">
-            <span>03</span>
-            <h3>Accessories</h3>
-            <p>Chargers, cables, power banks and other essential accessories.</p>
-        </div>
-
-        <div class="service-card">
-            <span>04</span>
-            <h3>Bulk Orders</h3>
-            <p>Contact us for business and bulk accessory requirements.</p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CTA -->
-<section class="cta">
+<section class="trust-bar">
 
     <div>
-        <p>LOOKING FOR THE PERFECT ACCESSORY?</p>
-        <h2>Let's find it for you.</h2>
+        <strong>Premium Quality</strong>
+        <span>Built for everyday life</span>
     </div>
 
-    <a href="https://wa.me/919999999999" class="btn primary">
-        Chat on WhatsApp
-    </a>
+    <div>
+        <strong>Fast Delivery</strong>
+        <span>Across India</span>
+    </div>
+
+    <div>
+        <strong>Secure Payments</strong>
+        <span>100% safe checkout</span>
+    </div>
+
+    <div>
+        <strong>Expert Support</strong>
+        <span>We're here to help</span>
+    </div>
 
 </section>
 
 
-<!-- GALLERY -->
-<section id="gallery" class="section gallery">
+<!-- =========================
+     SHOP BY DEVICE
+========================= -->
+
+<section class="device-section">
 
     <div class="section-heading">
-        <p>OUR STORE</p>
-        <h2>Gallery</h2>
+
+        <div>
+            <p class="eyebrow">FIND YOUR FIT</p>
+
+            <h2>
+                Shop by
+                <span>device.</span>
+            </h2>
+        </div>
+
+        <p>
+            Find accessories designed for your phone,
+            tablet and everyday tech.
+        </p>
+
     </div>
 
-    <div class="gallery-grid">
 
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=900&q=80"
-                 alt="Mobile phone">
-        </div>
+    <div class="device-grid">
 
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=80"
-                 alt="Smartphone">
-        </div>
+        <button class="device-card" data-device="Apple">
+            <div class="device-icon apple-icon"></div>
+            <h3>Apple</h3>
+            <span>iPhone · iPad · Mac</span>
+        </button>
 
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=80"
-                 alt="Mobile accessories">
-        </div>
+        <button class="device-card" data-device="Samsung">
+            <div class="device-icon">S</div>
+            <h3>Samsung</h3>
+            <span>Galaxy Series</span>
+        </button>
+
+        <button class="device-card" data-device="OnePlus">
+            <div class="device-icon">1+</div>
+            <h3>OnePlus</h3>
+            <span>Premium protection</span>
+        </button>
+
+        <button class="device-card" data-device="Others">
+            <div class="device-icon">+</div>
+            <h3>More devices</h3>
+            <span>Vivo · Oppo · Xiaomi · Moto</span>
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- CONTACT -->
-<section id="contact" class="section contact">
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section class="categories-section" id="categories">
+
+    <div class="section-heading center">
+
+        <p class="eyebrow">EXPLORE COVERNEO</p>
+
+        <h2>
+            Everything your
+            <span>device needs.</span>
+        </h2>
+
+    </div>
+
+
+    <div class="category-grid">
+
+        <article class="category-card large">
+
+            <div class="category-content">
+
+                <p>01 — PROTECTION</p>
+
+                <h3>
+                    Covers that
+                    <br>
+                    make a statement.
+                </h3>
+
+                <a href="#shop">Shop covers →</a>
+
+            </div>
+
+            <div class="category-visual case-visual">
+                <div class="case-shape"></div>
+            </div>
+
+        </article>
+
+
+        <article class="category-card">
+
+            <div class="category-content">
+
+                <p>02 — SCREEN</p>
+
+                <h3>
+                    Crystal clear.
+                    <br>
+                    Seriously strong.
+                </h3>
+
+                <a href="#shop">Shop protection →</a>
+
+            </div>
+
+            <div class="category-visual glass-visual">
+                <div class="glass-shape"></div>
+            </div>
+
+        </article>
+
+
+        <article class="category-card">
+
+            <div class="category-content">
+
+                <p>03 — POWER</p>
+
+                <h3>
+                    Charge faster.
+                    <br>
+                    Go further.
+                </h3>
+
+                <a href="#shop">Shop chargers →</a>
+
+            </div>
+
+            <div class="category-visual charger-visual">
+                <div class="charger-large"></div>
+            </div>
+
+        </article>
+
+
+        <article class="category-card">
+
+            <div class="category-content">
+
+                <p>04 — CONNECT</p>
+
+                <h3>
+                    Cables made
+                    <br>
+                    to last.
+                </h3>
+
+                <a href="#shop">Shop cables →</a>
+
+            </div>
+
+            <div class="category-visual cable-visual">
+                <div class="cable"></div>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURED PRODUCT
+========================= -->
+
+<section class="feature-section" id="protection">
+
+    <div class="feature-image">
+
+        <div class="feature-phone">
+
+            <div class="camera-module">
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="feature-content">
+
+        <p class="eyebrow">COVERNEO SIGNATURE</p>
+
+        <h2>
+            Minimal outside.
+            <br>
+            Maximum protection.
+        </h2>
+
+        <p>
+            A slim, premium case engineered to protect your device
+            without hiding its original character.
+        </p>
+
+        <ul>
+            <li>Military-grade drop protection</li>
+            <li>Raised camera & screen protection</li>
+            <li>MagSafe compatible</li>
+            <li>Soft-touch premium finish</li>
+        </ul>
+
+        <a href="#shop" class="btn btn-dark">
+            Explore cases
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SHOP PRODUCTS
+========================= -->
+
+<section class="shop-section" id="shop">
 
     <div class="section-heading">
-        <p>GET IN TOUCH</p>
-        <h2>Visit or Contact Us</h2>
-    </div>
 
-    <div class="contact-grid">
+        <div>
 
-        <div class="contact-info">
+            <p class="eyebrow">BEST SELLERS</p>
 
-            <div class="contact-box">
-                <span>📍</span>
-                <div>
-                    <h3>Store Address</h3>
-                    <p>Your Store Address, Gurugram, Haryana</p>
-                </div>
-            </div>
-
-            <div class="contact-box">
-                <span>📞</span>
-                <div>
-                    <h3>Phone</h3>
-                    <p>+91 99999 99999</p>
-                </div>
-            </div>
-
-            <div class="contact-box">
-                <span>✉️</span>
-                <div>
-                    <h3>Email</h3>
-                    <p>hello@coverneo.com</p>
-                </div>
-            </div>
+            <h2>
+                Loved by
+                <span>thousands.</span>
+            </h2>
 
         </div>
 
-        <div class="map">
-            <iframe
-                src="https://www.google.com/maps?q=Gurugram%20Haryana&output=embed"
-                loading="lazy">
-            </iframe>
+        <div class="filter-buttons">
+
+            <button class="filter active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter" data-filter="cases">
+                Cases
+            </button>
+
+            <button class="filter" data-filter="power">
+                Power
+            </button>
+
+            <button class="filter" data-filter="cables">
+                Cables
+            </button>
+
+            <button class="filter" data-filter="glass">
+                Protection
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="product-grid" id="productGrid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <article
+            class="product-card"
+            data-category="cases"
+            data-name="NeoShield Clear Case"
+        >
+
+            <div class="product-image product-case">
+
+                <span class="badge">
+                    Bestseller
+                </span>
+
+                <div class="mock-case"></div>
+
+            </div>
+
+            <div class="product-info">
+
+                <div>
+
+                    <h3>NeoShield Clear Case</h3>
+
+                    <p>
+                        iPhone 15 / 15 Pro
+                    </p>
+
+                </div>
+
+                <strong>₹699</strong>
+
+            </div>
+
+            <button
+                class="add-cart"
+                data-product="NeoShield Clear Case"
+                data-price="699"
+            >
+                Add to Bag
+            </button>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+
+        <article
+            class="product-card"
+            data-category="power"
+            data-name="NeoCharge 25W Adapter"
+        >
+
+            <div class="product-image product-charger">
+
+                <span class="badge">
+                    Fast Charge
+                </span>
+
+                <div class="mock-charger"></div>
+
+            </div>
+
+            <div class="product-info">
+
+                <div>
+
+                    <h3>NeoCharge 25W</h3>
+
+                    <p>
+                        USB-C Fast Charger
+                    </p>
+
+                </div>
+
+                <strong>₹999</strong>
+
+            </div>
+
+            <button
+                class="add-cart"
+                data-product="NeoCharge 25W"
+                data-price="999"
+            >
+                Add to Bag
+            </button>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+
+        <article
+            class="product-card"
+            data-category="glass"
+            data-name="NeoGlass Privacy"
+        >
+
+            <div class="product-image product-glass">
+
+                <span class="badge">
+                    Premium
+                </span>
+
+                <div class="mock-glass"></div>
+
+            </div>
+
+            <div class="product-info">
+
+                <div>
+
+                    <h3>NeoGlass Privacy</h3>
+
+                    <p>
+                        9H Tempered Glass
+                    </p>
+
+                </div>
+
+                <strong>₹399</strong>
+
+            </div>
+
+            <button
+                class="add-cart"
+                data-product="NeoGlass Privacy"
+                data-price="399"
+            >
+                Add to Bag
+            </button>
+
+        </article>
+
+
+        <!-- PRODUCT 4 -->
+
+        <article
+            class="product-card"
+            data-category="cables"
+            data-name="NeoFlex USB-C Cable"
+        >
+
+            <div class="product-image product-cable">
+
+                <span class="badge">
+                    New
+                </span>
+
+                <div class="mock-cable"></div>
+
+            </div>
+
+            <div class="product-info">
+
+                <div>
+
+                    <h3>NeoFlex Cable</h3>
+
+                    <p>
+                        USB-C to USB-C
+                    </p>
+
+                </div>
+
+                <strong>₹499</strong>
+
+            </div>
+
+            <button
+                class="add-cart"
+                data-product="NeoFlex Cable"
+                data-price="499"
+            >
+                Add to Bag
+            </button>
+
+        </article>
+
+
+        <!-- PRODUCT 5 -->
+
+        <article
+            class="product-card"
+            data-category="power"
+            data-name="NeoPower 10000"
+        >
+
+            <div class="product-image product-powerbank">
+
+                <div class="mock-powerbank"></div>
+
+            </div>
+
+            <div class="product-info">
+
+                <div>
+
+                    <h3>NeoPower 10K</h3>
+
+                    <p>
+                        10000mAh Power Bank
+                    </p>
+
+                </div>
+
+                <strong>₹1,499</strong>
+
+            </div>
+
+            <button
+                class="add-cart"
+                data-product="NeoPower 10K"
+                data-price="1499"
+            >
+                Add to Bag
+            </button>
+
+        </article>
+
+
+        <!-- PRODUCT 6 -->
+
+        <article
+            class="product-card"
+            data-category="cases"
+            data-name="NeoArmor MagSafe"
+        >
+
+            <div class="product-image product-armor">
+
+                <span class="badge">
+                    MagSafe
+                </span>
+
+                <div class="mock-armor"></div>
+
+            </div>
+
+            <div class="product-info">
+
+                <div>
+
+                    <h3>NeoArmor MagSafe</h3>
+
+                    <p>
+                        Shockproof Case
+                    </p>
+
+                </div>
+
+                <strong>₹899</strong>
+
+            </div>
+
+            <button
+                class="add-cart"
+                data-product="NeoArmor MagSafe"
+                data-price="899"
+            >
+                Add to Bag
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROMO BANNER
+========================= -->
+
+<section class="promo-section">
+
+    <div class="promo-content">
+
+        <p class="eyebrow">
+            POWER WITHOUT COMPROMISE
+        </p>
+
+        <h2>
+            One charger.
+            <br>
+            <span>Everywhere you go.</span>
+        </h2>
+
+        <p>
+            Compact GaN charging technology designed for
+            your phone, tablet, laptop and more.
+        </p>
+
+        <a href="#shop" class="btn btn-white">
+            Discover power
+        </a>
+
+    </div>
+
+    <div class="promo-visual">
+
+        <div class="gan-charger">
+            <div class="charger-port"></div>
+            <div class="charger-port"></div>
         </div>
 
     </div>
@@ -298,37 +766,330 @@
 </section>
 
 
-<!-- FOOTER -->
-<footer>
+<!-- =========================
+     REPAIR
+========================= -->
 
-    <div class="footer-logo">
-        Cover<span>Neo</span>
+<section class="repair-section" id="repair">
+
+    <div class="repair-content">
+
+        <p class="eyebrow">COVERNEO CARE</p>
+
+        <h2>
+            Your device.
+            <br>
+            <span>Our expertise.</span>
+        </h2>
+
+        <p>
+            From screen protection to device repairs,
+            our trained team helps keep your technology
+            performing at its best.
+        </p>
+
+        <div class="repair-services">
+
+            <div>
+                <strong>01</strong>
+                <h3>Screen Repair</h3>
+                <p>Professional display replacement.</p>
+            </div>
+
+            <div>
+                <strong>02</strong>
+                <h3>Battery Service</h3>
+                <p>Reliable battery replacement.</p>
+            </div>
+
+            <div>
+                <strong>03</strong>
+                <h3>Device Check</h3>
+                <p>Complete device diagnostics.</p>
+            </div>
+
+        </div>
+
+        <a
+            href="https://wa.me/919999999999?text=Hello%20CoverNeo,%20I%20need%20repair%20service."
+            target="_blank"
+            class="btn btn-dark"
+        >
+            Book a repair
+        </a>
+
     </div>
+
+</section>
+
+
+<!-- =========================
+     WHY COVERNEO
+========================= -->
+
+<section class="why-section" id="about">
+
+    <div class="section-heading center">
+
+        <p class="eyebrow">WHY COVERNEO</p>
+
+        <h2>
+            Better accessories.
+            <br>
+            <span>Better everyday.</span>
+        </h2>
+
+    </div>
+
+
+    <div class="why-grid">
+
+        <div class="why-card">
+
+            <div class="why-number">01</div>
+
+            <h3>Premium Quality</h3>
+
+            <p>
+                Every product is selected for durability,
+                performance and everyday reliability.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-number">02</div>
+
+            <h3>Designed for You</h3>
+
+            <p>
+                Minimal design, practical features and
+                perfect compatibility.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-number">03</div>
+
+            <h3>Customer First</h3>
+
+            <p>
+                Simple shopping, transparent pricing and
+                support whenever you need it.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NEWSLETTER
+========================= -->
+
+<section class="newsletter">
+
+    <p class="eyebrow">
+        STAY IN THE LOOP
+    </p>
+
+    <h2>
+        New drops.
+        <br>
+        Better protection.
+    </h2>
 
     <p>
-        Premium mobile covers & accessories.
+        Get updates about new products, exclusive offers
+        and CoverNeo launches.
     </p>
 
-    <div class="social">
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">LinkedIn</a>
+    <form id="newsletterForm">
+
+        <input
+            type="email"
+            id="emailInput"
+            placeholder="Your email address"
+            required
+        >
+
+        <button type="submit">
+            Subscribe →
+        </button>
+
+    </form>
+
+    <small id="newsletterMessage"></small>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div class="footer-brand">
+
+            <a href="#home" class="logo">
+                Cover<span>Neo</span>
+            </a>
+
+            <p>
+                Premium accessories.
+                Thoughtfully designed for your everyday.
+            </p>
+
+            <a
+                class="whatsapp-link"
+                href="https://wa.me/919999999999"
+                target="_blank"
+            >
+                Chat on WhatsApp →
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Shop</h4>
+
+            <a href="#shop">Cases</a>
+            <a href="#shop">Tempered Glass</a>
+            <a href="#shop">Chargers</a>
+            <a href="#shop">Cables</a>
+            <a href="#shop">Power Banks</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Services</h4>
+
+            <a href="#repair">Screen Repair</a>
+            <a href="#repair">Battery Service</a>
+            <a href="#repair">Device Check</a>
+            <a href="#protection">Screen Protection</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Company</h4>
+
+            <a href="#about">About CoverNeo</a>
+            <a href="#">Contact</a>
+            <a href="#">Shipping</a>
+            <a href="#">Returns</a>
+            <a href="#">Privacy</a>
+
+        </div>
+
+
+        <div class="footer-column contact-column">
+
+            <h4>Contact</h4>
+
+            <p>
+                Your Store Address,<br>
+                Gurugram, Haryana
+            </p>
+
+            <a href="tel:+919999999999">
+                +91 99999 99999
+            </a>
+
+            <a href="mailto:hello@coverneo.com">
+                hello@coverneo.com
+            </a>
+
+        </div>
+
     </div>
 
-    <p class="copyright">
-        © 2026 CoverNeo. All Rights Reserved.
-    </p>
+
+    <div class="footer-bottom">
+
+        <span>
+            © <span id="year"></span> CoverNeo. All rights reserved.
+        </span>
+
+        <span>
+            Made for your everyday.
+        </span>
+
+    </div>
 
 </footer>
 
 
-<!-- FLOATING WHATSAPP -->
-<a class="whatsapp"
-   href="https://wa.me/919999999999"
-   target="_blank"
-   aria-label="WhatsApp">
-    WhatsApp
-</a>
+<!-- =========================
+     CART DRAWER
+========================= -->
+
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<aside class="cart-drawer" id="cartDrawer">
+
+    <div class="cart-header">
+
+        <h2>Your Bag</h2>
+
+        <button id="closeCart">×</button>
+
+    </div>
+
+    <div id="cartItems" class="cart-items">
+
+        <p class="empty-cart">
+            Your bag is empty.
+        </p>
+
+    </div>
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            <span>Total</span>
+
+            <strong id="cartTotal">
+                ₹0
+            </strong>
+
+        </div>
+
+        <button class="checkout-btn" id="checkoutBtn">
+            Checkout
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div class="toast" id="toast">
+    Added to your bag.
+</div>
 
 
 <script src="script.js"></script>
