@@ -2455,3 +2455,36 @@ input:focus-visible {
     font-weight: 600;
     text-decoration: none;
 }
+/* =========================================
+   TRUST BAR - EMOJI FIX
+========================================= */
+
+.trust-bar .trust-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+}
+
+.trust-bar .trust-icon {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.trust-bar .trust-item > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.trust-bar .trust-item strong {
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.trust-bar .trust-item span {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.3;
+}
