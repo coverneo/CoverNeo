@@ -2488,3 +2488,152 @@ input:focus-visible {
     font-size: 13px;
     line-height: 1.3;
 }
+/* =========================================
+   COVERNEO TRUST BAR
+========================================= */
+
+.trust-bar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    padding: 42px 6%;
+    background: #ffffff;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+/* Individual Trust Item */
+
+.trust-bar .trust-item {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    padding: 0 32px;
+    border-right: 1px solid #dddddd;
+}
+
+
+/* Remove divider from last item */
+
+.trust-bar .trust-item:last-child {
+    border-right: none;
+}
+
+
+/* Emoji */
+
+.trust-bar .trust-icon {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    font-size: 27px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+
+/* Text Area */
+
+.trust-bar .trust-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+}
+
+
+/* Heading */
+
+.trust-bar .trust-content strong {
+    display: block;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #171717;
+}
+
+
+/* Description */
+
+.trust-bar .trust-content span {
+    display: block;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #777777;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .trust-bar {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 28px;
+        padding: 32px 5%;
+    }
+
+    .trust-bar .trust-item {
+        padding: 0 20px;
+    }
+
+    .trust-bar .trust-item:nth-child(2) {
+        border-right: none;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .trust-bar {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 28px 24px;
+    }
+
+    .trust-bar .trust-item {
+        padding: 0;
+        border-right: none;
+        border-bottom: 1px solid #eeeeee;
+        padding-bottom: 20px;
+    }
+
+    .trust-bar .trust-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .trust-bar .trust-icon {
+        width: 38px;
+        min-width: 38px;
+        height: 38px;
+        font-size: 24px;
+    }
+
+    .trust-bar .trust-content strong {
+        font-size: 14px;
+    }
+
+    .trust-bar .trust-content span {
+        font-size: 12px;
+    }
+
+}
