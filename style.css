@@ -453,12 +453,11 @@ section,
 
 
 /* =========================================
-   TRUST BAR
+   TRUST BAR - PNG ICONS
 ========================================= */
 
 .trust-bar {
     max-width: var(--container);
-
     margin: auto;
 
     display: grid;
@@ -471,19 +470,152 @@ section,
     gap: 25px;
 }
 
-.trust-bar div {
-    display: flex;
-    flex-direction: column;
+.trust-bar .trust-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+
+    gap: 16px;
+
+    min-width: 0;
+
+    padding: 0 25px;
+
+    border-right: 1px solid #dddddd;
+}
+
+.trust-bar .trust-item:last-child {
+    border-right: none;
+}
+
+
+/* PNG ICON */
+
+.trust-bar .trust-icon {
+    width: 42px;
+    min-width: 42px;
+
+    height: 42px;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.trust-bar .trust-icon img {
+    width: 32px;
+    height: 32px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* TEXT */
+
+.trust-bar .trust-content {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: flex-start;
+    justify-content: center;
+
     gap: 5px;
 }
 
-.trust-bar strong {
+.trust-bar .trust-content strong {
+    display: block;
+
+    margin: 0;
+
     font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    color: var(--text);
 }
 
-.trust-bar span {
+.trust-bar .trust-content span {
+    display: block;
+
+    margin: 0;
+
     color: var(--muted);
+
     font-size: 13px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================
+   TRUST BAR RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .trust-bar {
+        grid-template-columns: repeat(2, 1fr);
+
+        row-gap: 28px;
+
+        padding: 32px 20px;
+    }
+
+    .trust-bar .trust-item {
+        padding: 0 20px;
+    }
+
+    .trust-bar .trust-item:nth-child(2) {
+        border-right: none;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .trust-bar {
+        grid-template-columns: 1fr;
+
+        padding: 30px 25px;
+
+        gap: 22px;
+    }
+
+    .trust-bar .trust-item {
+        padding: 0;
+
+        border-right: none;
+
+        border-bottom: 1px solid #eeeeee;
+
+        padding-bottom: 20px;
+    }
+
+    .trust-bar .trust-item:last-child {
+        border-bottom: none;
+
+        padding-bottom: 0;
+    }
+
+    .trust-bar .trust-icon {
+        width: 40px;
+        min-width: 40px;
+
+        height: 40px;
+    }
+
+    .trust-bar .trust-icon img {
+        width: 30px;
+        height: 30px;
+    }
+
 }
 
 
