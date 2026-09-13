@@ -1,4 +1,3 @@
-```javascript
 /* =========================================
    COVERNEO JAVASCRIPT
 ========================================= */
@@ -332,6 +331,86 @@ filters.forEach(filter => {
     });
 
 });
+
+
+/* =========================================
+   CATEGORY CARD CLICK
+   WHOLE CARD IS CLICKABLE
+========================================= */
+
+document
+    .querySelectorAll(".category-card")
+    .forEach(card => {
+
+        const category =
+            card.dataset.categoryLink;
+
+
+        if (!category) return;
+
+
+        function openCategory() {
+
+            const filterButton =
+                document.querySelector(
+                    `.filter[data-filter="${category}"]`
+                );
+
+
+            const shopSection =
+                document.getElementById("shop");
+
+
+            if (filterButton) {
+
+                filterButton.click();
+
+            }
+
+
+            if (shopSection) {
+
+                shopSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        }
+
+
+        card.addEventListener("click", event => {
+
+            /*
+               If user clicks the text link,
+               don't open #shop first.
+               We handle everything here.
+            */
+
+            event.preventDefault();
+
+            openCategory();
+
+        });
+
+
+        card.addEventListener("keydown", event => {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                openCategory();
+
+            }
+
+        });
+
+    });
 
 
 /* =========================================
@@ -678,11 +757,6 @@ Please share the next steps.`
                 );
 
 
-            /*
-               CoverNeo WhatsApp Number
-               +91 9319990227
-            */
-
             window.open(
                 `https://wa.me/919319990227?text=${whatsappMessage}`,
                 "_blank"
@@ -870,4 +944,3 @@ updateCart();
 console.log(
     "CoverNeo website loaded successfully."
 );
-```
