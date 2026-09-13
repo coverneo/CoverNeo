@@ -803,8 +803,74 @@ section,
 
     padding: 45px;
 
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
 }
 
+
+/* Whole category card hover */
+
+.category-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.08);
+
+}
+
+
+/* Keep category content clickable */
+
+.category-content {
+
+    position: relative;
+
+    z-index: 10;
+
+    pointer-events: auto;
+
+}
+
+
+/* Category link */
+
+.category-content a {
+
+    position: relative;
+
+    z-index: 20;
+
+    pointer-events: auto;
+
+    cursor: pointer;
+
+}
+
+
+/* Visual must never block card click */
+
+.category-visual {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    pointer-events: none;
+
+}
 .category-card.large {
 
     grid-row: span 2;
