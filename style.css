@@ -867,6 +867,26 @@ section,
 
     align-items: flex-end;
 
+    pointer-events: none;
+
+}
+
+.category-card {
+    position: relative;
+    pointer-events: auto;
+}
+
+.category-content {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.category-content a {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 
