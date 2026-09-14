@@ -1,11 +1,12 @@
 /* =========================================
-   COVERNEO JAVASCRIPT
-========================================= */
+   COVERNEO — MAIN JAVASCRIPT
+   ========================================= */
 
+"use strict";
 
 /* =========================================
-   BASIC ELEMENTS
-========================================= */
+   DOM ELEMENTS
+   ========================================= */
 
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
@@ -29,52 +30,123 @@ const checkoutBtn = document.getElementById("checkoutBtn");
 
 const toast = document.getElementById("toast");
 
+const newsletterForm =
+    document.getElementById("newsletterForm");
+
+const emailInput =
+    document.getElementById("emailInput");
+
+const newsletterMessage =
+    document.getElementById("newsletterMessage");
+
+const navbar =
+    document.getElementById("navbar");
+
+const yearElement =
+    document.getElementById("year");
+
+
 /* =========================================
    SITE SETTINGS
-========================================= */
+   ========================================= */
 
 if (typeof COVERNEO !== "undefined") {
 
-    const siteLogo = document.getElementById("siteLogo");
-    const siteTagline = document.getElementById("siteTagline");
-    const siteWhatsApp = document.getElementById("siteWhatsApp");
-    const siteAddress = document.getElementById("siteAddress");
-    const sitePhone = document.getElementById("sitePhone");
-    const siteEmail = document.getElementById("siteEmail");
+    const siteLogo =
+        document.getElementById("siteLogo");
 
-    if (siteLogo) {
+    const siteTagline =
+        document.getElementById("siteTagline");
+
+    const siteWhatsApp =
+        document.getElementById("siteWhatsApp");
+
+    const siteAddress =
+        document.getElementById("siteAddress");
+
+    const sitePhone =
+        document.getElementById("sitePhone");
+
+    const siteEmail =
+        document.getElementById("siteEmail");
+
+
+    if (siteLogo && COVERNEO.logo) {
         siteLogo.src = COVERNEO.logo;
-        siteLogo.alt = `${COVERNEO.name} Logo`;
+        siteLogo.alt =
+            `${COVERNEO.name || "CoverNeo"} Logo`;
     }
 
-    if (siteTagline) {
-        siteTagline.textContent = COVERNEO.tagline;
+
+    if (siteTagline && COVERNEO.tagline) {
+        siteTagline.textContent =
+            COVERNEO.tagline;
     }
 
-    if (siteWhatsApp) {
-        siteWhatsApp.href = `https://wa.me/${COVERNEO.whatsapp}`;
+
+    if (siteWhatsApp && COVERNEO.whatsapp) {
+        siteWhatsApp.href =
+            `https://wa.me/${COVERNEO.whatsapp}`;
     }
 
-    if (siteAddress) {
+
+    if (siteAddress && COVERNEO.address) {
         siteAddress.innerHTML =
             COVERNEO.address.replace(", ", ",<br>");
     }
 
-    if (sitePhone) {
-        sitePhone.href = `tel:${COVERNEO.phone.replace(/\s+/g, "")}`;
-        sitePhone.textContent = COVERNEO.phone;
+
+    if (sitePhone && COVERNEO.phone) {
+
+        const cleanPhone =
+            COVERNEO.phone.replace(/\s+/g, "");
+
+        sitePhone.href =
+            `tel:${cleanPhone}`;
+
+        sitePhone.textContent =
+            COVERNEO.phone;
     }
 
-    if (siteEmail) {
-        siteEmail.href = `mailto:${COVERNEO.email}`;
-        siteEmail.textContent = COVERNEO.email;
+
+    if (siteEmail && COVERNEO.email) {
+
+        siteEmail.href =
+            `mailto:${COVERNEO.email}`;
+
+        siteEmail.textContent =
+            COVERNEO.email;
     }
 }
 
 
 /* =========================================
+   TOAST
+   ========================================= */
+
+let toastTimer = null;
+
+function showToast(message) {
+
+    if (!toast) return;
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2500);
+}
+
+
+/* =========================================
    MOBILE MENU
-========================================= */
+   ========================================= */
 
 if (menuBtn && mobileMenu) {
 
@@ -90,14 +162,15 @@ if (menuBtn && mobileMenu) {
 
         menuBtn.setAttribute(
             "aria-label",
-            isActive ? "Close menu" : "Open menu"
+            isActive
+                ? "Close menu"
+                : "Open menu"
         );
-
     });
 
 
-    document
-        .querySelectorAll(".mobile-menu a")
+    mobileMenu
+        .querySelectorAll("a")
         .forEach(link => {
 
             link.addEventListener("click", () => {
@@ -113,159 +186,215 @@ if (menuBtn && mobileMenu) {
                     "aria-label",
                     "Open menu"
                 );
-
             });
-
         });
-
 }
 
 
 /* =========================================
    SEARCH
-========================================= */
+   ========================================= */
 
-if (
-    searchBtn &&
-    searchOverlay &&
-    searchInput &&
-    closeSearch
-) {
+function openSearchOverlay() {
 
-    searchBtn.addEventListener("click", () => {
+    if (!searchOverlay) return;
 
-        searchOverlay.classList.add("active");
+    searchOverlay.classList.add("active");
 
-        setTimeout(() => {
+    setTimeout(() => {
 
+        if (searchInput) {
             searchInput.focus();
+        }
 
-        }, 200);
+    }, 200);
+}
 
-    });
+
+function closeSearchOverlay() {
+
+    if (!searchOverlay) return;
+
+    searchOverlay.classList.remove("active");
+}
 
 
-    closeSearch.addEventListener("click", () => {
+if (searchBtn) {
+    searchBtn.addEventListener(
+        "click",
+        openSearchOverlay
+    );
+}
 
-        searchOverlay.classList.remove("active");
 
-    });
+if (closeSearch) {
+    closeSearch.addEventListener(
+        "click",
+        closeSearchOverlay
+    );
+}
 
+
+if (searchOverlay) {
+
+    searchOverlay.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target === searchOverlay
+            ) {
+                closeSearchOverlay();
+            }
+        }
+    );
 }
 
 
 /* =========================================
-   KEYBOARD CONTROLS
-========================================= */
+   PRODUCT DATA CHECK
+   ========================================= */
 
-document.addEventListener("keydown", event => {
-
-    if (event.key === "Escape") {
-
-        if (searchOverlay) {
-
-            searchOverlay.classList.remove("active");
-
-        }
-
-        closeCartDrawer();
-
-        if (mobileMenu) {
-
-            mobileMenu.classList.remove("active");
-
-        }
-
-        if (menuBtn) {
-
-            menuBtn.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuBtn.setAttribute(
-                "aria-label",
-                "Open menu"
-            );
-
-        }
-
-    }
-
-});
-
+const productData =
+    Array.isArray(
+        typeof products !== "undefined"
+            ? products
+            : null
+    )
+        ? products
+        : [];
 
 
 /* =========================================
    RENDER PRODUCTS
-========================================= */
+   ========================================= */
 
 function renderProductCards() {
 
-    const productGrid = document.getElementById("productGrid");
+    const productGrid =
+        document.getElementById("productGrid");
 
-    if (!productGrid || typeof products === "undefined") return;
+    if (!productGrid) return;
 
-    productGrid.innerHTML = products.map(product => `
-        <article
-            class="product-card"
-            data-category="${product.filterCategory}"
-            data-name="${product.searchName}"
-        >
+    if (productData.length === 0) {
 
-            <div class="product-image ${product.imageClass}">
+        productGrid.innerHTML = `
+            <p class="empty-products">
+                Products are currently unavailable.
+            </p>
+        `;
 
-                ${product.badge ? `
-                    <span class="badge">
-                        ${product.badge}
-                    </span>
-                ` : ""}
+        return;
+    }
 
-                <div class="${product.mockClass}"></div>
 
-            </div>
+    productGrid.innerHTML =
+        productData.map(product => {
 
-            <div class="product-info">
+            const name =
+                product.name || "Product";
 
-                <div>
+            const category =
+                product.category || "";
 
-                    <h3>${product.name}</h3>
+            const filterCategory =
+                product.filterCategory || "";
 
-                    <p>
-                        ${product.description}
-                    </p>
+            const description =
+                product.description || "";
 
-                </div>
+            const badge =
+                product.badge || "";
 
-                <strong>₹${product.price.toLocaleString("en-IN")}</strong>
+            const imageClass =
+                product.imageClass || "";
 
-            </div>
+            const mockClass =
+                product.mockClass || "";
 
-            <button
-                class="add-cart"
-                data-product="${product.name}"
-                data-price="${product.price}"
-            >
-                Add to Bag
-            </button>
+            const price =
+                Number(product.price) || 0;
 
-        </article>
-    `).join("");
+            const searchName =
+                product.searchName || name;
+
+
+            return `
+                <article
+                    class="product-card"
+                    data-category="${filterCategory}"
+                    data-name="${searchName}"
+                >
+
+                    <div class="product-image ${imageClass}">
+
+                        ${
+                            badge
+                                ? `
+                                    <span class="badge">
+                                        ${badge}
+                                    </span>
+                                `
+                                : ""
+                        }
+
+                        <div class="${mockClass}"></div>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <div>
+
+                            <h3>
+                                ${name}
+                            </h3>
+
+                            <p>
+                                ${description}
+                            </p>
+
+                        </div>
+
+                        <strong>
+                            ₹${price.toLocaleString("en-IN")}
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        class="add-cart"
+                        type="button"
+                        data-product="${name}"
+                        data-price="${price}"
+                    >
+                        Add to Bag
+                    </button>
+
+                </article>
+            `;
+
+        }).join("");
 }
+
 
 renderProductCards();
 
+
 /* =========================================
-   PRODUCT SEARCH
-========================================= */
+   SEARCH RESULTS
+   ========================================= */
 
 function renderSearchResults(query) {
 
     if (!searchResults) return;
 
-
     const cleanQuery =
-        query.trim().toLowerCase();
+        String(query || "")
+            .trim()
+            .toLowerCase();
 
 
     if (!cleanQuery) {
@@ -273,53 +402,83 @@ function renderSearchResults(query) {
         searchResults.innerHTML = "";
 
         return;
-
     }
 
 
-    const matches = products.filter(product => {
+    const matches =
+        productData.filter(product => {
 
-        return (
-            product.name
-                .toLowerCase()
-                .includes(cleanQuery) ||
+            const name =
+                String(product.name || "")
+                    .toLowerCase();
 
-            product.category
-                .toLowerCase()
-                .includes(cleanQuery)
-        );
+            const category =
+                String(product.category || "")
+                    .toLowerCase();
 
-    });
+            const description =
+                String(product.description || "")
+                    .toLowerCase();
+
+            const searchName =
+                String(product.searchName || "")
+                    .toLowerCase();
+
+
+            return (
+                name.includes(cleanQuery) ||
+                category.includes(cleanQuery) ||
+                description.includes(cleanQuery) ||
+                searchName.includes(cleanQuery)
+            );
+        });
 
 
     if (matches.length === 0) {
 
         searchResults.innerHTML = `
             <div class="search-result">
-                <strong>No products found.</strong>
-                <span>Try another search.</span>
+                <strong>
+                    No products found.
+                </strong>
+
+                <span>
+                    Try another search.
+                </span>
             </div>
         `;
 
         return;
-
     }
 
 
     searchResults.innerHTML =
         matches.map(product => {
 
+            const price =
+                Number(product.price) || 0;
+
             return `
-                <div class="search-result">
-                    <strong>${product.name}</strong>
+                <button
+                    type="button"
+                    class="search-result"
+                    data-search-product="${product.name}"
+                >
+
+                    <strong>
+                        ${product.name}
+                    </strong>
+
                     <span>
-                        ${product.category} · ₹${product.price.toLocaleString("en-IN")}
+                        ${product.category || ""}
+                        ·
+                        ₹${price.toLocaleString("en-IN")}
                     </span>
-                </div>
+
+                </button>
             `;
 
         }).join("");
-
 }
 
 
@@ -332,68 +491,145 @@ if (searchInput) {
             renderSearchResults(
                 event.target.value
             );
-
         }
     );
+}
 
+
+/* =========================================
+   SEARCH RESULT CLICK
+   ========================================= */
+
+if (searchResults) {
+
+    searchResults.addEventListener(
+        "click",
+        event => {
+
+            const result =
+                event.target.closest(
+                    "[data-search-product]"
+                );
+
+            if (!result) return;
+
+            const productName =
+                result.dataset.searchProduct;
+
+            closeSearchOverlay();
+
+            if (searchInput) {
+                searchInput.value = "";
+            }
+
+            const productCard =
+                Array.from(
+                    document.querySelectorAll(
+                        ".product-card"
+                    )
+                ).find(card =>
+                    card.dataset.name === productName
+                );
+
+
+            if (productCard) {
+
+                productCard.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+
+                productCard.animate(
+                    [
+                        {
+                            transform: "scale(1)"
+                        },
+                        {
+                            transform: "scale(1.03)"
+                        },
+                        {
+                            transform: "scale(1)"
+                        }
+                    ],
+                    {
+                        duration: 500
+                    }
+                );
+            }
+        }
+    );
 }
 
 
 /* =========================================
    PRODUCT FILTER
-========================================= */
+   ========================================= */
+
+function applyProductFilter(category) {
+
+    const productCards =
+        document.querySelectorAll(
+            ".product-card"
+        );
+
+
+    productCards.forEach(card => {
+
+        const cardCategory =
+            card.dataset.category;
+
+
+        if (
+            category === "all" ||
+            cardCategory === category
+        ) {
+
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
+        }
+    });
+}
+
 
 const filters =
     document.querySelectorAll(".filter");
 
-const productCards =
-    document.querySelectorAll(".product-card");
-
 
 filters.forEach(filter => {
 
-    filter.addEventListener("click", () => {
+    filter.addEventListener(
+        "click",
+        () => {
 
-        filters.forEach(item => {
+            filters.forEach(item => {
 
-            item.classList.remove("active");
+                item.classList.remove(
+                    "active"
+                );
 
-        });
-
-
-        filter.classList.add("active");
-
-
-        const category =
-            filter.dataset.filter;
+            });
 
 
-        productCards.forEach(card => {
+            filter.classList.add("active");
 
-            if (
-                category === "all" ||
-                card.dataset.category === category
-            ) {
 
-                card.style.display = "";
+            const category =
+                filter.dataset.filter || "all";
 
-            } else {
 
-                card.style.display = "none";
-
-            }
-
-        });
-
-    });
-
+            applyProductFilter(category);
+        }
+    );
 });
 
 
 /* =========================================
    CATEGORY CARD CLICK
-   WHOLE CARD IS CLICKABLE
-========================================= */
+   ========================================= */
 
 document
     .querySelectorAll(".category-card")
@@ -401,7 +637,6 @@ document
 
         const category =
             card.dataset.categoryLink;
-
 
         if (!category) return;
 
@@ -414,15 +649,13 @@ document
                 );
 
 
+            if (filterButton) {
+                filterButton.click();
+            }
+
+
             const shopSection =
                 document.getElementById("shop");
-
-
-            if (filterButton) {
-
-                filterButton.click();
-
-            }
 
 
             if (shopSection) {
@@ -431,95 +664,112 @@ document
                     behavior: "smooth",
                     block: "start"
                 });
-
             }
-
         }
 
 
-        card.addEventListener("click", event => {
+        card.addEventListener(
+            "click",
+            event => {
 
-            /*
-               If user clicks the text link,
-               don't open #shop first.
-               We handle everything here.
-            */
+                /*
+                 * Do not interfere with
+                 * actual links/buttons.
+                 */
 
-            event.preventDefault();
-
-            openCategory();
-
-        });
-
-
-        card.addEventListener("keydown", event => {
-
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-
-                event.preventDefault();
+                if (
+                    event.target.closest("a") ||
+                    event.target.closest("button")
+                ) {
+                    return;
+                }
 
                 openCategory();
-
             }
+        );
 
-        });
 
+        card.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    openCategory();
+                }
+            }
+        );
     });
 
 
 /* =========================================
-   DEVICE FILTER
-========================================= */
+   DEVICE SECTION
+   ========================================= */
+
+/*
+ * Your current products.js does not contain
+ * device compatibility data.
+ *
+ * Therefore we do NOT pretend that Apple,
+ * Samsung or Pixel products are being filtered.
+ *
+ * Clicking a device currently takes the user
+ * to the shop and shows a helpful message.
+ */
 
 document
     .querySelectorAll(".device-card")
     .forEach(card => {
 
-        card.addEventListener("click", () => {
+        card.addEventListener(
+            "click",
+            () => {
 
-            const device =
-                card.dataset.device;
+                const device =
+                    card.dataset.device ||
+                    "selected device";
 
 
-            const shopSection =
-                document.getElementById("shop");
+                const shopSection =
+                    document.getElementById("shop");
 
 
-            if (shopSection) {
+                if (shopSection) {
 
-                shopSection.scrollIntoView({
-                    behavior: "smooth"
-                });
+                    shopSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
 
+
+                setTimeout(() => {
+
+                    showToast(
+                        `Accessories for ${device} are coming soon.`
+                    );
+
+                }, 500);
             }
-
-
-            setTimeout(() => {
-
-                showToast(
-                    `Showing accessories for ${device}`
-                );
-
-            }, 500);
-
-        });
-
+        );
     });
 
 
 /* =========================================
    CART SYSTEM
-========================================= */
+   ========================================= */
 
 let cart = [];
 
 
 /* =========================================
    UPDATE CART
-========================================= */
+   ========================================= */
 
 function updateCart() {
 
@@ -527,11 +777,12 @@ function updateCart() {
 
         cartCount.textContent =
             cart.length;
-
     }
 
 
-    if (!cartItems || !cartTotal) return;
+    if (!cartItems || !cartTotal) {
+        return;
+    }
 
 
     if (cart.length === 0) {
@@ -545,7 +796,6 @@ function updateCart() {
         cartTotal.textContent = "₹0";
 
         return;
-
     }
 
 
@@ -557,7 +807,9 @@ function updateCart() {
 
                     <div>
 
-                        <h4>${item.name}</h4>
+                        <h4>
+                            ${item.name}
+                        </h4>
 
                         <p>
                             ₹${item.price.toLocaleString("en-IN")}
@@ -565,9 +817,11 @@ function updateCart() {
 
                     </div>
 
+
                     <button
+                        type="button"
                         class="remove-item"
-                        onclick="removeFromCart(${index})"
+                        data-remove-index="${index}"
                     >
                         Remove
                     </button>
@@ -589,112 +843,151 @@ function updateCart() {
     cartTotal.textContent =
         "₹" +
         total.toLocaleString("en-IN");
-
 }
 
 
 /* =========================================
    ADD TO CART
-========================================= */
+   ========================================= */
 
 function addToCart(name, price) {
 
+    const numericPrice =
+        Number(price);
+
+
+    if (!name || !Number.isFinite(numericPrice)) {
+
+        showToast(
+            "Product information unavailable."
+        );
+
+        return;
+    }
+
+
     cart.push({
-
         name: name,
-
-        price: Number(price)
-
+        price: numericPrice
     });
 
 
     updateCart();
 
+
     showToast(
         `${name} added to your bag.`
     );
-
 }
 
 
 /* =========================================
    REMOVE FROM CART
-========================================= */
+   ========================================= */
 
 function removeFromCart(index) {
 
+    const numericIndex =
+        Number(index);
+
+
     if (
-        index < 0 ||
-        index >= cart.length
+        !Number.isInteger(numericIndex) ||
+        numericIndex < 0 ||
+        numericIndex >= cart.length
     ) {
-
         return;
-
     }
 
 
     const removedItem =
-        cart[index];
+        cart[numericIndex];
 
 
-    cart.splice(index, 1);
+    cart.splice(
+        numericIndex,
+        1
+    );
 
 
     updateCart();
 
 
-    showToast(
-        `${removedItem.name} removed from your bag.`
-    );
+    if (removedItem) {
 
+        showToast(
+            `${removedItem.name} removed from your bag.`
+        );
+    }
 }
 
+
+/*
+ * Keep global function compatibility
+ * in case any existing HTML uses it.
+ */
 
 window.removeFromCart =
     removeFromCart;
 
 
 /* =========================================
-   ADD TO BAG BUTTONS
-========================================= */
+   ADD TO BAG
+   ========================================= */
 
-document
-    .querySelectorAll(".add-cart")
-    .forEach(button => {
+document.addEventListener(
+    "click",
+    event => {
 
-        button.addEventListener(
-            "click",
-            () => {
+        const button =
+            event.target.closest(
+                ".add-cart"
+            );
 
-                const name =
-                    button.dataset.product;
-
-                const price =
-                    button.dataset.price;
+        if (!button) return;
 
 
-                if (!name || !price) {
+        const name =
+            button.dataset.product;
 
-                    showToast(
-                        "Product information unavailable."
-                    );
-
-                    return;
-
-                }
+        const price =
+            button.dataset.price;
 
 
-                addToCart(name, price);
-
-            }
+        addToCart(
+            name,
+            price
         );
+    }
+);
 
-    });
+
+/* =========================================
+   REMOVE FROM BAG
+   ========================================= */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest(
+                "[data-remove-index]"
+            );
+
+        if (!button) return;
+
+
+        removeFromCart(
+            button.dataset.removeIndex
+        );
+    }
+);
 
 
 /* =========================================
    OPEN CART
-========================================= */
+   ========================================= */
 
 function openCartDrawer() {
 
@@ -703,16 +996,19 @@ function openCartDrawer() {
     }
 
 
-    cartDrawer.classList.add("active");
+    cartDrawer.classList.add(
+        "active"
+    );
 
-    cartOverlay.classList.add("active");
-
+    cartOverlay.classList.add(
+        "active"
+    );
 }
 
 
 /* =========================================
    CLOSE CART
-========================================= */
+   ========================================= */
 
 function closeCartDrawer() {
 
@@ -721,10 +1017,13 @@ function closeCartDrawer() {
     }
 
 
-    cartDrawer.classList.remove("active");
+    cartDrawer.classList.remove(
+        "active"
+    );
 
-    cartOverlay.classList.remove("active");
-
+    cartOverlay.classList.remove(
+        "active"
+    );
 }
 
 
@@ -734,7 +1033,6 @@ if (cartBtn) {
         "click",
         openCartDrawer
     );
-
 }
 
 
@@ -744,7 +1042,6 @@ if (closeCart) {
         "click",
         closeCartDrawer
     );
-
 }
 
 
@@ -754,13 +1051,12 @@ if (cartOverlay) {
         "click",
         closeCartDrawer
     );
-
 }
 
 
 /* =========================================
-   CHECKOUT — WHATSAPP
-========================================= */
+   WHATSAPP CHECKOUT
+   ========================================= */
 
 if (checkoutBtn) {
 
@@ -775,7 +1071,19 @@ if (checkoutBtn) {
                 );
 
                 return;
+            }
 
+
+            if (
+                typeof COVERNEO === "undefined" ||
+                !COVERNEO.whatsapp
+            ) {
+
+                showToast(
+                    "WhatsApp checkout is unavailable."
+                );
+
+                return;
             }
 
 
@@ -800,7 +1108,6 @@ if (checkoutBtn) {
 
             const whatsappMessage =
                 encodeURIComponent(
-
                     `Hello CoverNeo,
 
 I want to order:
@@ -810,72 +1117,26 @@ ${message}
 Total: ₹${total.toLocaleString("en-IN")}
 
 Please share the next steps.`
-
                 );
 
 
-            window.open(
-                `https://wa.me/${COVERNEO.whatsapp}?text=${whatsappMessage}`,
-                "_blank"
-            );
+            const whatsappURL =
+                `https://wa.me/${COVERNEO.whatsapp}?text=${whatsappMessage}`;
 
+
+            window.open(
+                whatsappURL,
+                "_blank",
+                "noopener,noreferrer"
+            );
         }
     );
-
-}
-
-
-/* =========================================
-   TOAST
-========================================= */
-
-let toastTimer;
-
-
-function showToast(message) {
-
-    if (!toast) return;
-
-
-    toast.textContent =
-        message;
-
-
-    toast.classList.add("show");
-
-
-    clearTimeout(toastTimer);
-
-
-    toastTimer =
-        setTimeout(() => {
-
-            toast.classList.remove("show");
-
-        }, 2500);
-
 }
 
 
 /* =========================================
    NEWSLETTER
-========================================= */
-
-const newsletterForm =
-    document.getElementById(
-        "newsletterForm"
-    );
-
-const emailInput =
-    document.getElementById(
-        "emailInput"
-    );
-
-const newsletterMessage =
-    document.getElementById(
-        "newsletterMessage"
-    );
-
+   ========================================= */
 
 if (
     newsletterForm &&
@@ -900,7 +1161,15 @@ if (
                     "Please enter your email.";
 
                 return;
+            }
 
+
+            if (!emailInput.checkValidity()) {
+
+                newsletterMessage.textContent =
+                    "Please enter a valid email.";
+
+                return;
             }
 
 
@@ -909,36 +1178,25 @@ if (
 
 
             emailInput.value = "";
-
         }
     );
-
 }
 
 
 /* =========================================
    CURRENT YEAR
-========================================= */
-
-const yearElement =
-    document.getElementById("year");
-
+   ========================================= */
 
 if (yearElement) {
 
     yearElement.textContent =
         new Date().getFullYear();
-
 }
 
 
 /* =========================================
    NAVBAR SCROLL EFFECT
-========================================= */
-
-const navbar =
-    document.getElementById("navbar");
-
+   ========================================= */
 
 if (navbar) {
 
@@ -955,48 +1213,62 @@ if (navbar) {
 
                 navbar.style.boxShadow =
                     "none";
-
             }
-
+        },
+        {
+            passive: true
         }
     );
-
 }
 
 
 /* =========================================
-   CLOSE SEARCH WITH BACKDROP
-========================================= */
+   KEYBOARD CONTROLS
+   ========================================= */
 
-if (searchOverlay) {
+document.addEventListener(
+    "keydown",
+    event => {
 
-    searchOverlay.addEventListener(
-        "click",
-        event => {
-
-            if (
-                event.target ===
-                searchOverlay
-            ) {
-
-                searchOverlay.classList.remove(
-                    "active"
-                );
-
-            }
-
+        if (event.key !== "Escape") {
+            return;
         }
-    );
 
-}
+
+        closeSearchOverlay();
+
+        closeCartDrawer();
+
+
+        if (mobileMenu) {
+
+            mobileMenu.classList.remove(
+                "active"
+            );
+        }
+
+
+        if (menuBtn) {
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuBtn.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        }
+    }
+);
 
 
 /* =========================================
    INITIALIZE
-========================================= */
+   ========================================= */
 
 updateCart();
-
 
 console.log(
     "CoverNeo website loaded successfully."
